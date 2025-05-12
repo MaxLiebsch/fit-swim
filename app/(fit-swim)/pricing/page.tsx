@@ -14,14 +14,11 @@ export default async function PricingPage() {
     limit: 1,
     depth: 4,
   })) as PayloadWrapper<Pricing>;
-  console.log("pricing:", pricing.docs[0]);
 
   const hero = pricing.docs[0].heroSection;
   const trainingConcepts = pricing.docs[0].trainingApproach;
   const specializedPrograms = pricing.docs[0].specializedPrograms;
-  console.log("specializedPrograms:", specializedPrograms);
   const pricingPackages = pricing.docs[0].trainingPackages;
-  console.log("pricingPackages:", pricingPackages);
   const additionalServices = pricing.docs[0].additionalServices;
   const faq = pricing.docs[0].faqSection;
   const cta = pricing.docs[0].ctaSection;
