@@ -1,6 +1,6 @@
-import "@/app/globals.css";
-import Footer from "@/components/footer";
-import Navbar from "@/components/navbar";
+import "@/app/(fit-swim)/globals.css";
+import Footer from "@/components/layout/footer";
+import Navbar from "@/components/layout/navbar";
 import { ThemeProvider } from "@/components/theme-provider";
 import { Inter } from "next/font/google";
 import type React from "react";
@@ -8,7 +8,7 @@ import type React from "react";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
-  title: "Berlin Swim Trainer - Professional Swimming Lessons",
+  title: "Fit Swim - Professional Swimming Lessons",
   description:
     "Professional swim training in Berlin for all ages and abilities. Improve your technique, build confidence, and achieve your swimming goals.",
 };
