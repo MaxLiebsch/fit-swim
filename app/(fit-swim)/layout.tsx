@@ -30,7 +30,7 @@ export default async function RootLayout({
           disableTransitionOnChange
         >
           <div className="flex flex-col min-h-screen">
-            <Navbar data={navbar.docs[0]} />
+            <Navbar data={navbar.docs[0] as any} />
             <main className="flex-1">{children}</main>
             <Footer />
           </div>

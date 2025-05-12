@@ -1,55 +1,49 @@
-import { Mail, MapPin, Phone, Waves } from "lucide-react"
-import Link from "next/link"
+import { getFooter } from "@/payload/getFooter";
+import { Mail, MapPin, Phone, Waves } from "lucide-react";
+import Link from "next/link";
 
-export default function Footer() {
+export default async function Footer() {
+  const footer = await getFooter();
+  const _ = footer.docs[0];
+  const {companyInfo, quickLinks, contact} = _;
   return (
     <footer className="bg-sky-900 text-white">
       <div className="container mx-auto px-4 py-12 md:px-6">
-        <div className="grid gap-8 md:grid-cols-4">
+        <div className="grid gap-8 md:grid-cols-3">
           <div>
             <Link href="/" className="flex items-center gap-2 mb-4">
               <Waves className="h-6 w-6" />
-              <span className="text-lg font-bold">Fit Swim Berlin</span>
+              <span className="text-lg font-bold">{companyInfo.logoText}</span>
             </Link>
             <p className="text-sky-200 text-sm">
-              Professional swim training in Berlin for all ages and abilities. Improve your technique, build confidence,
-              and achieve your swimming goals.
+              {companyInfo.description}
             </p>
           </div>
           <div>
-            <h3 className="text-lg font-bold mb-4">Quick Links</h3>
+            <h3 className="text-lg font-bold mb-4">{quickLinks.title}</h3>
             <nav className="flex flex-col gap-2">
-              <Link href="/" className="text-sky-200 hover:text-white text-sm">
-                Home
-              </Link>
-              <Link href="/about" className="text-sky-200 hover:text-white text-sm">
-                About
-              </Link>
-              <Link href="/pricing" className="text-sky-200 hover:text-white text-sm">
-                Pricing
-              </Link>
-              <Link href="/testimonials" className="text-sky-200 hover:text-white text-sm">
-                Testimonials
-              </Link>
-              <Link href="/contact" className="text-sky-200 hover:text-white text-sm">
-                Contact
-              </Link>
+              {quickLinks.menuItems.map((item) => (
+                <Link key={item.id} href={item.link} className="text-sky-200 hover:text-white text-sm">
+                  {item.label}
+                </Link>
+              ))}
+             
             </nav>
           </div>
           <div>
-            <h3 className="text-lg font-bold mb-4">Contact</h3>
+            <h3 className="text-lg font-bold mb-4">{contact.title}</h3>
             <div className="space-y-3">
               <div className="flex items-start">
                 <Mail className="mr-2 h-5 w-5 text-sky-200" />
-                <span className="text-sky-200 text-sm">info@berlinswimtrainer.de</span>
+                <span className="text-sky-200 text-sm">{contact.email}</span>
               </div>
               <div className="flex items-start">
                 <Phone className="mr-2 h-5 w-5 text-sky-200" />
-                <span className="text-sky-200 text-sm">+49 (0) 123 456 789</span>
+                <span className="text-sky-200 text-sm">{contact.phone}</span>
               </div>
               <div className="flex items-start">
                 <MapPin className="mr-2 h-5 w-5 text-sky-200" />
-                <span className="text-sky-200 text-sm">Berlin, Germany</span>
+                <span className="text-sky-200 text-sm">{contact.address}</span>
               </div>
             </div>
           </div>
