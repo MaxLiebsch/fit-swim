@@ -1,14 +1,14 @@
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
-import { Mail, Phone, MapPin, Calendar, MessageSquare } from "lucide-react"
+import { Calendar, Mail, MapPin, MessageSquare, Phone } from "lucide-react"
 
 export default function ContactPage() {
   return (
     <div className="flex flex-col min-h-screen">
       {/* Hero Section */}
       <section className="py-20 bg-sky-50">
-        <div className="container px-4 md:px-6">
+        <div className="container mx-auto px-4 md:px-6">
           <div className="text-center max-w-3xl mx-auto">
             <h1 className="text-4xl font-bold tracking-tight sm:text-5xl md:text-6xl mb-6">Contact Me</h1>
             <p className="text-xl text-muted-foreground mb-8">
@@ -20,7 +20,7 @@ export default function ContactPage() {
 
       {/* Contact Form Section */}
       <section className="py-20 bg-white">
-        <div className="container px-4 md:px-6">
+        <div className="container mx-auto px-4 md:px-6">
           <div className="grid md:grid-cols-2 gap-10">
             <div>
               <h2 className="text-3xl font-bold mb-6">Get in Touch</h2>
@@ -117,7 +117,7 @@ export default function ContactPage() {
 
       {/* FAQ Section */}
       <section className="py-20 bg-sky-50">
-        <div className="container px-4 md:px-6">
+        <div className="container mx-auto px-4 md:px-6">
           <h2 className="text-3xl font-bold tracking-tight text-center mb-12">Frequently Asked Questions</h2>
           <div className="max-w-3xl mx-auto space-y-6">
             <div className="bg-white rounded-lg p-6 shadow-sm">
@@ -166,7 +166,7 @@ export default function ContactPage() {
 
       {/* Map Section */}
       <section className="py-20 bg-white">
-        <div className="container px-4 md:px-6">
+        <div className="container mx-auto px-4 md:px-6">
           <h2 className="text-3xl font-bold tracking-tight text-center mb-12">Training Locations in Berlin</h2>
           <div className="aspect-[16/9] bg-muted rounded-lg overflow-hidden">
             <div className="w-full h-full flex items-center justify-center">
@@ -184,7 +184,7 @@ export default function ContactPage() {
 
       {/* CTA Section */}
       <section className="py-20 bg-sky-600 text-white">
-        <div className="container px-4 md:px-6 text-center">
+        <div className="container mx-auto px-4 md:px-6 text-center">
           <h2 className="text-3xl font-bold tracking-tight sm:text-4xl md:text-5xl mb-6">
             Ready to Start Your Swimming Journey?
           </h2>

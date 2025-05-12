@@ -1,15 +1,15 @@
-import { Facebook, Instagram, Mail, MapPin, Phone, Twitter, Waves } from "lucide-react"
+import { Mail, MapPin, Phone, Waves } from "lucide-react"
 import Link from "next/link"
 
 export default function Footer() {
   return (
     <footer className="bg-sky-900 text-white">
-      <div className="container px-4 py-12 md:px-6">
+      <div className="container mx-auto px-4 py-12 md:px-6">
         <div className="grid gap-8 md:grid-cols-4">
           <div>
             <Link href="/" className="flex items-center gap-2 mb-4">
               <Waves className="h-6 w-6" />
-              <span className="text-lg font-bold">Berlin Swim Trainer</span>
+              <span className="text-lg font-bold">Fit Swim Berlin</span>
             </Link>
             <p className="text-sky-200 text-sm">
               Professional swim training in Berlin for all ages and abilities. Improve your technique, build confidence,
@@ -54,7 +54,7 @@ export default function Footer() {
             </div>
           </div>
           <div>
-            <h3 className="text-lg font-bold mb-4">Follow Me</h3>
+            {/* <h3 className="text-lg font-bold mb-4">Follow Me</h3>
             <div className="flex gap-4">
               <Link href="#" className="text-sky-200 hover:text-white">
                 <Instagram className="h-6 w-6" />
@@ -68,8 +68,8 @@ export default function Footer() {
                 <Twitter className="h-6 w-6" />
                 <span className="sr-only">Twitter</span>
               </Link>
-            </div>
-            <div className="mt-6">
+            </div> */}
+            {/* <div className="mt-6">
               <h4 className="text-sm font-bold mb-2">Newsletter</h4>
               <p className="text-sky-200 text-sm mb-2">Subscribe for swimming tips and updates</p>
               <div className="flex gap-2">
@@ -80,11 +80,11 @@ export default function Footer() {
                 />
                 <button className="bg-sky-600 hover:bg-sky-700 px-3 py-2 rounded-md text-sm">Subscribe</button>
               </div>
-            </div>
+            </div> */}
           </div>
         </div>
         <div className="mt-12 pt-6 border-t border-sky-800 text-center text-sky-300 text-sm">
-          <p>&copy; {new Date().getFullYear()} Berlin Swim Trainer. All rights reserved.</p>
+          <p>&copy; {new Date().getFullYear()} Fit Swim Berlin. All rights reserved.</p>
         </div>
       </div>
     </footer>

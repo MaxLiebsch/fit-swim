@@ -2,6 +2,7 @@ import "@/app/(fit-swim)/globals.css";
 import Footer from "@/components/layout/footer";
 import Navbar from "@/components/layout/navbar";
 import { ThemeProvider } from "@/components/theme-provider";
+import { getNavbar } from "@/payload/getNavbar";
 import { Inter } from "next/font/google";
 import type React from "react";
 
@@ -13,11 +14,12 @@ export const metadata = {
     "Professional swim training in Berlin for all ages and abilities. Improve your technique, build confidence, and achieve your swimming goals.",
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const navbar = await getNavbar();
   return (
     <html lang="en">
       <body className={inter.className}>
@@ -28,7 +30,7 @@ export default function RootLayout({
           disableTransitionOnChange
         >
           <div className="flex flex-col min-h-screen">
-            <Navbar />
+            <Navbar data={navbar.docs[0]} />
             <main className="flex-1">{children}</main>
             <Footer />
           </div>

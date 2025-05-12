@@ -1,14 +1,14 @@
-import Image from "next/image"
-import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { Award, Calendar, MapPin } from "lucide-react"
+import Image from "next/image"
+import Link from "next/link"
 
 export default function AboutPage() {
   return (
     <div className="flex flex-col min-h-screen">
       {/* Hero Section */}
       <section className="py-20 bg-sky-50">
-        <div className="container px-4 md:px-6">
+        <div className="container mx-auto px-4 md:px-6">
           <div className="grid md:grid-cols-2 gap-10 items-center">
             <div className="order-2 md:order-1">
               <h1 className="text-4xl font-bold tracking-tight sm:text-5xl md:text-6xl mb-6">About Me</h1>
@@ -38,7 +38,7 @@ export default function AboutPage() {
 
       {/* Bio Section */}
       <section className="py-20 bg-white">
-        <div className="container px-4 md:px-6">
+        <div className="container mx-auto px-4 md:px-6">
           <div className="max-w-3xl mx-auto">
             <h2 className="text-3xl font-bold mb-6">My Story</h2>
             <div className="prose prose-lg max-w-none">
@@ -72,7 +72,7 @@ export default function AboutPage() {
 
       {/* Qualifications Section */}
       <section className="py-20 bg-sky-50">
-        <div className="container px-4 md:px-6">
+        <div className="container mx-auto px-4 md:px-6">
           <div className="text-center mb-12">
             <h2 className="text-3xl font-bold tracking-tight">Qualifications & Experience</h2>
           </div>
@@ -145,7 +145,7 @@ export default function AboutPage() {
 
       {/* Training Locations */}
       <section className="py-20 bg-white">
-        <div className="container px-4 md:px-6">
+        <div className="container mx-auto px-4 md:px-6">
           <div className="text-center mb-12">
             <h2 className="text-3xl font-bold tracking-tight">Training Locations in Berlin</h2>
             <p className="mt-4 text-muted-foreground md:text-xl">I offer training at various pools throughout Berlin</p>
@@ -201,7 +201,7 @@ export default function AboutPage() {
 
       {/* CTA Section */}
       <section className="py-20 bg-sky-600 text-white">
-        <div className="container px-4 md:px-6 text-center">
+        <div className="container mx-auto  px-4 md:px-6 text-center">
           <h2 className="text-3xl font-bold tracking-tight sm:text-4xl md:text-5xl mb-6">
             Ready to Start Your Swimming Journey?
           </h2>

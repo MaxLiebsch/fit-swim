@@ -1,9 +1,15 @@
+import Home from '@/payload/collections/home'
+import { Navbar } from '@/payload/collections/navbar'
+import Packages from '@/payload/collections/packages'
+import { PricingPage } from '@/payload/collections/pricing'
+import Testimonials from '@/payload/collections/testimonials'
 import { Media } from '@/payload/media'
 import { mongooseAdapter } from '@payloadcms/db-mongodb'
 import { lexicalEditor } from '@payloadcms/richtext-lexical'
 import { s3Storage } from "@payloadcms/storage-s3"
 import { buildConfig } from 'payload'
 import sharp from 'sharp'
+
 
 const {
   NODE_ENV,
@@ -20,7 +26,7 @@ export default buildConfig({
   editor: lexicalEditor(),
 
   // Define and configure your collections in this array
-  collections: [Media as any],
+  collections: [Media, Home, Testimonials, Packages, Navbar, PricingPage],
 
   // Your Payload secret - should be a complex and secure string, unguessable
   secret: PAYLOAD_SECRET || '',

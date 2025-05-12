@@ -1,15 +1,15 @@
-import Image from "next/image"
-import Link from "next/link"
+import TestimonialCard from "@/components/testimonial-card"
 import { Button } from "@/components/ui/button"
 import { Star } from "lucide-react"
-import TestimonialCard from "@/components/testimonial-card"
+import Image from "next/image"
+import Link from "next/link"
 
 export default function TestimonialsPage() {
   return (
     <div className="flex flex-col min-h-screen">
       {/* Hero Section */}
       <section className="py-20 bg-sky-50">
-        <div className="container px-4 md:px-6">
+        <div className="container mx-auto px-4 md:px-6">
           <div className="text-center max-w-3xl mx-auto">
             <h1 className="text-4xl font-bold tracking-tight sm:text-5xl md:text-6xl mb-6">Client Testimonials</h1>
             <p className="text-xl text-muted-foreground mb-8">Success stories from swimmers across Berlin</p>
@@ -27,7 +27,7 @@ export default function TestimonialsPage() {
 
       {/* Featured Testimonials */}
       <section className="py-20 bg-white">
-        <div className="container px-4 md:px-6">
+        <div className="container mx-auto px-4 md:px-6">
           <h2 className="text-3xl font-bold tracking-tight text-center mb-12">Featured Success Stories</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-10 max-w-4xl mx-auto">
             <div className="bg-sky-50 rounded-lg p-8 relative">
@@ -93,7 +93,7 @@ export default function TestimonialsPage() {
 
       {/* All Testimonials */}
       <section className="py-20 bg-sky-50">
-        <div className="container px-4 md:px-6">
+        <div className="container mx-auto px-4 md:px-6">
           <h2 className="text-3xl font-bold tracking-tight text-center mb-12">More Client Testimonials</h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             <TestimonialCard
@@ -156,7 +156,7 @@ export default function TestimonialsPage() {
 
       {/* Video Testimonials */}
       <section className="py-20 bg-white">
-        <div className="container px-4 md:px-6">
+        <div className="container mx-auto px-4 md:px-6">
           <h2 className="text-3xl font-bold tracking-tight text-center mb-4">Before and After</h2>
           <p className="text-center text-muted-foreground mb-12 max-w-2xl mx-auto">
             See the real progress my clients have made with these before and after comparisons
@@ -200,7 +200,7 @@ export default function TestimonialsPage() {
 
       {/* CTA Section */}
       <section className="py-20 bg-sky-600 text-white">
-        <div className="container px-4 md:px-6 text-center">
+        <div className="container mx-auto px-4 md:px-6 text-center">
           <h2 className="text-3xl font-bold tracking-tight sm:text-4xl md:text-5xl mb-6">Join These Success Stories</h2>
           <p className="mb-8 text-sky-100 md:text-xl max-w-2xl mx-auto">
             Whether you're a complete beginner or looking to refine your technique, I'm here to help you achieve your

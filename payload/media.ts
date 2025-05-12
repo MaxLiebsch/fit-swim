@@ -1,7 +1,8 @@
 import path from "path";
+import { CollectionConfig } from "payload";
 import sharp from "sharp";
 
-export const Media = {
+export const Media: CollectionConfig = {
   slug: "media",
   access: {
     read: () => true, // Allow read access to everyone
