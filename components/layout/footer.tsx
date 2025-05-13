@@ -78,7 +78,7 @@ export default async function Footer() {
           </div>
         </div>
         <div className="mt-12 pt-6 border-t border-sky-800 text-center text-sky-300 text-sm">
-          <p>&copy; {new Date().getFullYear()} Fit Swim Berlin. All rights reserved.</p>
+          <p>&copy; {new Date().getFullYear()} Fit Swim Berlin. Alle Rechte vorbehalten.</p>
         </div>
       </div>
     </footer>

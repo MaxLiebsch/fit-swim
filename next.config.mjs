@@ -1,8 +1,11 @@
-/** @type {import('next').NextConfig} */
+/** @type {import('next').NextConfig} */ 
 
-import { withPayload } from '@payloadcms/next/withPayload'
+import createMDX from "@next/mdx";
+import { withPayload } from "@payloadcms/next/withPayload";
 
 const nextConfig = {
+  turbopack: {},
+  reactStrictMode: true,
   eslint: {
     ignoreDuringBuilds: true,
   },
@@ -12,9 +15,15 @@ const nextConfig = {
   experimental: {
     reactCompiler: false,
   },
-  images: {
-    unoptimized: true,
-  },
-}
+  pageExtensions: ['js', 'jsx', 'ts', 'tsx', 'md', 'mdx'],
+};
 
-export default withPayload(nextConfig)
+const withMDX = createMDX({
+  extension: /\.(md|mdx)$/, 
+  options: {
+    remarkPlugins: [],
+    rehypePlugins: [],
+  },
+});
+
+export default withMDX(withPayload(nextConfig));

@@ -9,9 +9,17 @@ import type React from "react";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
-  title: "Fit Swim - Professional Swimming Lessons",
+  title: "Fit Swim - Professionaler Schwimmunterricht",
+  keywords: [
+    "Schwimmunterricht",
+    "Schwimmstunde",
+    "Schwimmkurs",
+    "Schwimmlehrer",
+    "Berlin",
+    "Kinderkurse",
+  ],
   description:
-    "Professional swim training in Berlin for all ages and abilities. Improve your technique, build confidence, and achieve your swimming goals.",
+    "Professioneller Schwimmunterricht in Berlin für alle Altersgruppen und Schwimmstärken. Verbessern Sie Ihre Technik, bauen Sie Vertrauen und erreichen Sie Ihre Schwimmziele.",
 };
 
 export default async function RootLayout({
@@ -21,8 +29,8 @@ export default async function RootLayout({
 }>) {
   const navbar = await getNavbar();
   return (
-    <html lang="en">
-      <body className={inter.className}>
+    <html lang="de">
+      <body className={inter.className} suppressHydrationWarning>
         <ThemeProvider
           attribute="class"
           defaultTheme="light"

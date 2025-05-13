@@ -21,6 +21,7 @@ export default async function Home() {
   const aboutSection = home.docs[0].aboutPreview;
   const pricingSection = home.docs[0].pricingPreview;
   const testimonialsSection = home.docs[0].testimonialsSection;
+  const ctaSection = home.docs[0].ctaSection;
   return (
     <div className="flex flex-col min-h-screen">
       <HeroSection hero={home.docs[0].hero} />
@@ -38,7 +39,7 @@ export default async function Home() {
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {featureSection.features.map((feature) => (
-              <div className="flex flex-col items-center text-center p-6 bg-sky-50 rounded-lg">
+              <div key={feature.id} className="flex flex-col items-center text-center p-6 bg-sky-50 rounded-lg">
                 <div className="p-3 rounded-full bg-sky-100 mb-4">
                   {feature.icon === "waves" && (
                     <Waves className="h-6 w-6 text-sky-600" />
@@ -66,9 +67,9 @@ export default async function Home() {
               <h2 className="text-3xl font-bold tracking-tight mb-4">
                 {aboutSection.heading}
               </h2>
-              <p className="text-muted-foreground mb-6">
+              <div className="text-muted-foreground mb-6">
                 <RichText content={aboutSection.content as any} />
-              </p>
+              </div>
               <Button asChild className="bg-sky-600 hover:bg-sky-700">
                 <Link href={aboutSection.buttonLink}>
                   {aboutSection.buttonText}
@@ -121,7 +122,7 @@ export default async function Home() {
                 </div>
                 <ul className="space-y-2 mb-6 flex-grow">
                   {pricePackage.features.map((feature) => (
-                    <li className="flex items-center">
+                    <li key={feature.id} className="flex items-center">
                       <ChevronRight className="mr-2 h-4 w-4 text-sky-600" />
                       <span>{feature.feature}</span>
                     </li>
@@ -179,22 +180,21 @@ export default async function Home() {
       <section className="py-20 bg-sky-600 text-white">
         <div className="container mx-auto px-4 md:px-6 text-center">
           <h2 className="text-3xl font-bold tracking-tight sm:text-4xl md:text-5xl mb-6">
-            Ready to Improve Your Swimming?
+            {ctaSection.heading}
           </h2>
           <p className="mb-8 text-sky-100 md:text-xl max-w-2xl mx-auto">
-            Book your first session today and start your journey to becoming a
-            confident, skilled swimmer.
+            {ctaSection.content}
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button asChild className="bg-white text-sky-600 hover:bg-sky-50">
-              <Link href="/contact">Book a Session</Link>
+              <Link href={ctaSection.primaryButtonLink}>{ctaSection.primaryButtonText}</Link>
             </Button>
             <Button
               asChild
               variant="outline"
               className="text-white bg-sky-700 border-none hover:text-white hover:bg-sky-700/20"
             >
-              <Link href="/pricing">View Pricing</Link>
+              <Link href={ctaSection.secondaryButtonLink}>{ctaSection.secondaryButtonText}</Link>
             </Button>
           </div>
         </div>
