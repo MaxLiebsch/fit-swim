@@ -10,8 +10,8 @@ export default function RootLayout({
 }) {
   return (
     <html lang="de">
-      <body className="prose">
-        <div className="container mx-auto">
+      <body>
+        <div className="container mx-auto px-4 md:px-6">
           {children}
         </div>
       </body>
