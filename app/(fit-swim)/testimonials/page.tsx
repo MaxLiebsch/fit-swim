@@ -9,6 +9,9 @@ export default async function TestimonialsPage() {
   const testimonials = await getTestimonialPage();
   const page = testimonials.docs[0];
   const {
+    title,
+    description,
+    statsText,
     ctaTitle,
     ctaDescription,
     primaryButtonText,
@@ -32,10 +35,10 @@ export default async function TestimonialsPage() {
         <div className="container mx-auto px-4 md:px-6">
           <div className="text-center max-w-3xl mx-auto">
             <h1 className="text-4xl font-bold tracking-tight sm:text-5xl md:text-6xl mb-6">
-              Client Testimonials
+              {title}
             </h1>
             <p className="text-xl text-muted-foreground mb-8">
-              Success stories from swimmers across Berlin
+              {description}
             </p>
             <div className="flex justify-center mb-8">
               <div className="flex">
@@ -48,7 +51,7 @@ export default async function TestimonialsPage() {
               </div>
             </div>
             <p className="text-muted-foreground">
-              Over 200 satisfied clients and counting
+              {statsText}
             </p>
           </div>
         </div>
@@ -115,6 +118,7 @@ export default async function TestimonialsPage() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {allTestimonials.map((testimonials) => (
               <TestimonialCard
+                key={testimonials.id}
                 name={testimonials.name}
                 location={testimonials.location}
                 quote={testimonials.quote}

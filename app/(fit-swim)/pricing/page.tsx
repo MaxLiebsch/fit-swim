@@ -152,9 +152,15 @@ export default async function PricingPage() {
             {pricingPackages.packages.map((pack) => (
               <div
                 key={pack.id}
-                className="border rounded-lg p-6 shadow-sm flex flex-col"
+                className={`border rounded-lg p-6 shadow-sm flex flex-col h-full relative ${pack.isPopular ? 'bg-sky-50' : ''}`}
+
               >
-                <h3 className="text-xl font-bold mb-2">Starter Package</h3>
+                {pack.isPopular && (
+                  <div className="absolute top-0 right-0 bg-sky-600 text-white text-xs font-bold px-3 py-1 rounded-bl-lg rounded-tr-lg">
+                    POPULAR
+                  </div>
+                )}
+                <h3 className="text-xl font-bold mb-2">{pack.name}</h3>
                 <div className="text-3xl font-bold mb-4">
                   €{pack.price}
                   <span className="text-base font-normal text-muted-foreground">
@@ -163,7 +169,7 @@ export default async function PricingPage() {
                 </div>
                 <ul className="space-y-2 mb-6 flex-grow">
                   {pack.features.map((feature) => (
-                    <li className="flex items-center">
+                    <li key={feature.id} className="flex items-center">
                       <ChevronRight className="mr-2 h-4 w-4 text-sky-600" />
                       <span>{feature.feature}</span>
                     </li>
