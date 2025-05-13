@@ -113,7 +113,7 @@ export default async function ContactPage() {
       </section>
 
       {/* Map Section */}
-      <section className="py-20 bg-white">
+      {/* <section className="py-20 bg-white">
         <div className="container mx-auto px-4 md:px-6">
           <h2 className="text-3xl font-bold tracking-tight text-center mb-12">
             {mapSection.heading}
@@ -131,7 +131,7 @@ export default async function ContactPage() {
             </p>
           </div>
         </div>
-      </section>
+      </section> */}
 
       {/* CTA Section */}
       <section className="py-20 bg-sky-600 text-white">
