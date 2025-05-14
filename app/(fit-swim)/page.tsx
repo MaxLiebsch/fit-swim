@@ -9,6 +9,9 @@ import { Award, Calendar, ChevronRight, Waves } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { getPayload } from "payload";
+
+export const revalidate = 3600;
+
 export default async function Home() {
   const payload = await getPayload({ config });
 

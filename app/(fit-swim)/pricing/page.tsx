@@ -7,6 +7,8 @@ import Image from "next/image";
 import Link from "next/link";
 import { getPayload } from "payload";
 
+export const revalidate = 3600;
+
 export default async function PricingPage() {
   const payload = await getPayload({ config });
   const pricing = (await payload.find({

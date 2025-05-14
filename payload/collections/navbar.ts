@@ -28,6 +28,12 @@ export const Navbar: CollectionConfig = {
           type: 'text',
           defaultValue: 'text-sky-600',
         },
+        {
+          name: 'image',
+          type: 'upload',
+          relationTo: 'media',
+          required: false,
+        }
       ],
     },
     {
@@ -67,6 +73,7 @@ export const Navbar: CollectionConfig = {
               type: 'text',
               defaultValue: 'hover:bg-sky-700',
             },
+          
           ],
         },
       ],

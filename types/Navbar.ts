@@ -1,8 +1,11 @@
+import { Image } from "./IHome";
+
 export interface NavbarProps {
     data: {
       logo: {
         text: string;
         color: string;
+        image: Image;
       };
       menuItems: {
         label: string;

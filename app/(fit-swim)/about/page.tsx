@@ -5,6 +5,8 @@ import { Award, Calendar, MapPin } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 
+export const revalidate = 3600;
+
 export default async function AboutPage() {
   const about = await getAbout();
   const hero = about.docs[0].hero;

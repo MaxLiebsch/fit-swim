@@ -5,6 +5,8 @@ import { Star } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 
+export const revalidate = 3600;
+
 export default async function TestimonialsPage() {
   const testimonials = await getTestimonialPage();
   const page = testimonials.docs[0];
@@ -20,10 +22,6 @@ export default async function TestimonialsPage() {
     secondaryButtonLink,
     featuredTestimonialsTitle,
     testimonialsTitle,
-    videoTestimonialsTitle,
-    videoTestimonialsDescription,
-    videoFooterText,
-    videoCtaText,
   } = page;
   const featuredTestimonials = testimonials.docs[0].featuredTestimonials;
   const allTestimonials = testimonials.docs[0].testimonials;

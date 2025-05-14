@@ -4,6 +4,8 @@ import { Toaster } from "@/components/ui/toaster";
 import { getContact } from "@/payload/getContact";
 import { Calendar, Mail, MapPin, MessageSquare, Phone } from "lucide-react";
 
+export const revalidate = 3600;
+
 export default async function ContactPage() {
   const contact = await getContact();
   const page = contact.docs[0];
@@ -12,7 +14,6 @@ export default async function ContactPage() {
     contactFormSection,
     contactInfo,
     faqSection,
-    mapSection,
     ctaSection,
   } = page;
   const {formHeading, submitButtonText} = contactFormSection
