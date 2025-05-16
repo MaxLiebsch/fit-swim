@@ -11,19 +11,19 @@ export default async function Footer() {
       <div className="container mx-auto px-4 py-12 md:px-6">
         <div className="grid gap-8 md:grid-cols-3">
           <div>
-            <Link href="/" className="flex items-center gap-2 mb-4">
-              <Waves className="h-6 w-6" />
+            <Link href="/" className="mb-4 flex items-center gap-2">
+              <Waves className="size-6" />
               <span className="text-lg font-bold">{companyInfo.logoText}</span>
             </Link>
-            <p className="text-sky-200 text-sm">
+            <p className="text-sm text-sky-200">
               {companyInfo.description}
             </p>
           </div>
           <div>
-            <h3 className="text-lg font-bold mb-4">{quickLinks.title}</h3>
+            <h3 className="mb-4 text-lg font-bold">{quickLinks.title}</h3>
             <nav className="flex flex-col gap-2">
               {quickLinks.menuItems.map((item) => (
-                <Link key={item.id} href={item.link} className="text-sky-200 hover:text-white text-sm">
+                <Link key={item.id} href={item.link} className="text-sm text-sky-200 hover:text-white">
                   {item.label}
                 </Link>
               ))}
@@ -31,19 +31,19 @@ export default async function Footer() {
             </nav>
           </div>
           <div>
-            <h3 className="text-lg font-bold mb-4">{contact.title}</h3>
+            <h3 className="mb-4 text-lg font-bold">{contact.title}</h3>
             <div className="space-y-3">
               <div className="flex items-start">
-                <Mail className="mr-2 h-5 w-5 text-sky-200" />
-                <span className="text-sky-200 text-sm">{contact.email}</span>
+                <Mail className="mr-2 size-5 text-sky-200" />
+                <span className="text-sm text-sky-200">{contact.email}</span>
               </div>
               <div className="flex items-start">
-                <Phone className="mr-2 h-5 w-5 text-sky-200" />
-                <span className="text-sky-200 text-sm">{contact.phone}</span>
+                <Phone className="mr-2 size-5 text-sky-200" />
+                <span className="text-sm text-sky-200">{contact.phone}</span>
               </div>
               <div className="flex items-start">
-                <MapPin className="mr-2 h-5 w-5 text-sky-200" />
-                <span className="text-sky-200 text-sm">{contact.address}</span>
+                <MapPin className="mr-2 size-5 text-sky-200" />
+                <span className="text-sm text-sky-200">{contact.address}</span>
               </div>
             </div>
           </div>
@@ -77,7 +77,7 @@ export default async function Footer() {
             </div> */}
           </div>
         </div>
-        <div className="mt-12 pt-6 border-t border-sky-800 text-center text-sky-300 text-sm">
+        <div className="mt-12 border-t border-sky-800 pt-6 text-center text-sm text-sky-300">
           <p>&copy; {new Date().getFullYear()} Fit Swim Berlin. Alle Rechte vorbehalten.</p>
         </div>
       </div>

@@ -9,7 +9,7 @@ const SubmitBtn = ({submitButtonText}: {submitButtonText: string}) => {
   return (
     <Button variant='default' type="submit" className="w-full bg-sky-600 hover:bg-sky-700" disabled={pending}>
       {submitButtonText}
-      {pending && <Loader2 className="ml-2 h-4 w-4 animate-spin" />}
+      {pending && <Loader2 className="ml-2 size-4 animate-spin" />}
     </Button>
   );
 };

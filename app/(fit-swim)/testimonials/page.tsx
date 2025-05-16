@@ -27,23 +27,23 @@ export default async function TestimonialsPage() {
   const allTestimonials = testimonials.docs[0].testimonials;
   const beforeAfter = testimonials.docs[0].beforeAfterVideos;
   return (
-    <div className="flex flex-col min-h-screen">
+    <div className="flex min-h-screen flex-col">
       {/* Hero Section */}
-      <section className="py-20 bg-sky-50">
+      <section className="bg-sky-50 py-20">
         <div className="container mx-auto px-4 md:px-6">
-          <div className="text-center max-w-3xl mx-auto">
-            <h1 className="text-4xl font-bold tracking-tight sm:text-5xl md:text-6xl mb-6">
+          <div className="mx-auto max-w-3xl text-center">
+            <h1 className="mb-6 text-4xl font-bold tracking-tight sm:text-5xl md:text-6xl">
               {title}
             </h1>
-            <p className="text-xl text-muted-foreground mb-8">
+            <p className="mb-8 text-xl text-muted-foreground">
               {description}
             </p>
-            <div className="flex justify-center mb-8">
+            <div className="mb-8 flex justify-center">
               <div className="flex">
                 {[...Array(5)].map((_, i) => (
                   <Star
                     key={i}
-                    className="h-6 w-6 text-yellow-400 fill-yellow-400"
+                    className="size-6 fill-yellow-400 text-yellow-400"
                   />
                 ))}
               </div>
@@ -56,22 +56,22 @@ export default async function TestimonialsPage() {
       </section>
 
       {/* Featured Testimonials */}
-      <section className="py-20 bg-white">
+      <section className="bg-white py-20">
         <div className="container mx-auto px-4 md:px-6">
-          <h2 className="text-3xl font-bold tracking-tight text-center mb-12">
+          <h2 className="mb-12 text-center text-3xl font-bold tracking-tight">
             {featuredTestimonialsTitle}
           </h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-10 max-w-4xl mx-auto">
+          <div className="mx-auto grid max-w-4xl grid-cols-1 gap-10 md:grid-cols-2">
             {featuredTestimonials.map((testimonial) => (
               <div
                 key={testimonial.id}
-                className="bg-sky-50 rounded-lg p-8 relative"
+                className="relative rounded-lg bg-sky-50 p-8"
               >
-                <div className="absolute -top-6 left-8 bg-sky-600 rounded-full p-3">
-                  <Star className="h-6 w-6 text-white fill-white" />
+                <div className="absolute -top-6 left-8 rounded-full bg-sky-600 p-3">
+                  <Star className="size-6 fill-white text-white" />
                 </div>
-                <div className="flex flex-col md:flex-row gap-6 items-center md:items-start">
-                  <div className="relative w-24 h-24 rounded-full overflow-hidden flex-shrink-0">
+                <div className="flex flex-col items-center gap-6 md:flex-row md:items-start">
+                  <div className="relative size-24 shrink-0 overflow-hidden rounded-full">
                     <Image
                       src={
                         testimonial.testimonial.image?.url || "/app-icon.svg"
@@ -84,15 +84,15 @@ export default async function TestimonialsPage() {
                     />
                   </div>
                   <div>
-                    <div className="flex mb-2">
+                    <div className="mb-2 flex">
                       {[...Array(5)].map((_, i) => (
                         <Star
                           key={i}
-                          className="h-4 w-4 text-yellow-400 fill-yellow-400"
+                          className="size-4 fill-yellow-400 text-yellow-400"
                         />
                       ))}
                     </div>
-                    <p className="italic mb-4">
+                    <p className="mb-4 italic">
                       {testimonial.testimonial.quote}
                     </p>
                     <p className="font-bold">{testimonial.testimonial.name}</p>
@@ -108,12 +108,12 @@ export default async function TestimonialsPage() {
       </section>
 
       {/* All Testimonials */}
-      <section className="py-20 bg-sky-50">
+      <section className="bg-sky-50 py-20">
         <div className="container mx-auto px-4 md:px-6">
-          <h2 className="text-3xl font-bold tracking-tight text-center mb-12">
+          <h2 className="mb-12 text-center text-3xl font-bold tracking-tight">
             {testimonialsTitle}
           </h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 gap-8 md:grid-cols-3">
             {allTestimonials.map((testimonials) => (
               <TestimonialCard
                 key={testimonials.id}
@@ -129,25 +129,25 @@ export default async function TestimonialsPage() {
 
       {/* Video Testimonials */}
       {beforeAfter.length && (
-        <section className="py-20 b]g-white">
+        <section className="bg-white py-20">
           <div className="container mx-auto px-4 md:px-6">
-            <h2 className="text-3xl font-bold tracking-tight text-center mb-4">
+            <h2 className="mb-4 text-center text-3xl font-bold tracking-tight">
               Before and After
             </h2>
-            <p className="text-center text-muted-foreground mb-12 max-w-2xl mx-auto">
+            <p className="mx-auto mb-12 max-w-2xl text-center text-muted-foreground">
               See the real progress my clients have made with these before and
               after comparisons
             </p>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-10 max-w-4xl mx-auto">
+            <div className="mx-auto grid max-w-4xl grid-cols-1 gap-10 md:grid-cols-2">
               <div>
-                <div className="aspect-video bg-muted rounded-lg overflow-hidden mb-4">
-                  <div className="w-full h-full flex items-center justify-center">
+                <div className="mb-4 aspect-video overflow-hidden rounded-lg bg-muted">
+                  <div className="flex size-full items-center justify-center">
                     <p className="text-muted-foreground">
                       Before Training Video
                     </p>
                   </div>
                 </div>
-                <h3 className="text-xl font-bold mb-2">
+                <h3 className="mb-2 text-xl font-bold">
                   Before: Inefficient Freestyle
                 </h3>
                 <p className="text-muted-foreground">
@@ -156,14 +156,14 @@ export default async function TestimonialsPage() {
                 </p>
               </div>
               <div>
-                <div className="aspect-video bg-muted rounded-lg overflow-hidden mb-4">
-                  <div className="w-full h-full flex items-center justify-center">
+                <div className="mb-4 aspect-video overflow-hidden rounded-lg bg-muted">
+                  <div className="flex size-full items-center justify-center">
                     <p className="text-muted-foreground">
                       After Training Video
                     </p>
                   </div>
                 </div>
-                <h3 className="text-xl font-bold mb-2">
+                <h3 className="mb-2 text-xl font-bold">
                   After: Streamlined Technique
                 </h3>
                 <p className="text-muted-foreground">
@@ -173,8 +173,8 @@ export default async function TestimonialsPage() {
                 </p>
               </div>
             </div>
-            <div className="text-center mt-12">
-              <p className="text-muted-foreground mb-6">
+            <div className="mt-12 text-center">
+              <p className="mb-6 text-muted-foreground">
                 These results are typical for clients who commit to regular
                 training and practice.
               </p>
@@ -187,22 +187,22 @@ export default async function TestimonialsPage() {
       )}
 
       {/* CTA Section */}
-      <section className="py-20 bg-sky-600 text-white">
-        <div className="container mx-auto px-4 md:px-6 text-center">
-          <h2 className="text-3xl font-bold tracking-tight sm:text-4xl md:text-5xl mb-6">
+      <section className="bg-sky-600 py-20 text-white">
+        <div className="container mx-auto px-4 text-center md:px-6">
+          <h2 className="mb-6 text-3xl font-bold tracking-tight sm:text-4xl md:text-5xl">
             {ctaTitle}
           </h2>
-          <p className="mb-8 text-sky-100 md:text-xl max-w-2xl mx-auto">
+          <p className="mx-auto mb-8 max-w-2xl text-sky-100 md:text-xl">
             {ctaDescription}
           </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+          <div className="flex flex-col justify-center gap-4 sm:flex-row">
             <Button asChild className="bg-white text-sky-600 hover:bg-sky-50">
               <Link href={primaryButtonLink}>{primaryButtonText}</Link>
             </Button>
             <Button
               asChild
               variant="outline"
-              className="text-white bg-sky-700 border-none hover:text-white hover:bg-sky-700/20"
+              className="border-none bg-sky-700 text-white hover:bg-sky-700/20 hover:text-white"
             >
               <Link href={secondaryButtonLink}>{secondaryButtonText}</Link>
             </Button>

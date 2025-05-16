@@ -37,8 +37,8 @@ export default async function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <div className="flex flex-col min-h-screen">
-            <Navbar data={navbar.docs[0] as any} />
+          <div className="flex min-h-screen flex-col">
+            <Navbar navbar={navbar} />
             <main className="flex-1">{children}</main>
             <Footer />
           </div>

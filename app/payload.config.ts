@@ -15,7 +15,6 @@ import { buildConfig } from "payload";
 import sharp from "sharp";
 
 const {
-  NODE_ENV,
   PAYLOAD_SECRET,
   DATABASE_URI,
   R2_BUCKET,

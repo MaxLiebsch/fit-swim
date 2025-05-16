@@ -9,7 +9,6 @@ export async function GET(
   { params }: { params: { locale: string } }
 ) {
   const { locale } = await params;
-  const url = `${R2_ENDPOINT}/${R2_BUCKET}/locales/${locale}.json`;
 
   const r2Client = new S3Client({
     region: "auto",

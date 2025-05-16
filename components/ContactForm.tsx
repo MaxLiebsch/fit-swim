@@ -17,7 +17,7 @@ const ContactForm = ({ submitButtonText }: { submitButtonText: string }) => {
         title: data.message,
       });
     }
-  }, [data.message]);
+  }, [data.message, toast]);
 
   return (
     <form className="space-y-4" action={formAction}>

@@ -3,11 +3,13 @@
 import { Button } from "@/components/ui/button";
 import { useMobile } from "@/hooks/use-mobile";
 import { NavbarProps } from "@/types/Navbar";
+import { PayloadWrapper } from "@/types/PayloadWrapper";
 import { Menu, Waves, X } from "lucide-react";
 import Link from "next/link";
 import { useState } from "react";
 
-export default function Navbar({ data }: NavbarProps) {
+export default function Navbar({navbar}: {navbar: PayloadWrapper<NavbarProps>}) {
+  const data = navbar.docs[0];
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const isMobile = useMobile();
 
@@ -15,7 +17,7 @@ export default function Navbar({ data }: NavbarProps) {
     setIsMenuOpen(!isMenuOpen);
   };
 
-  const renderMenuItem = (item: NavbarProps['data']['menuItems'][0], onClick?: () => void) => {
+  const renderMenuItem = (item: NavbarProps['menuItems'][0], onClick?: () => void) => {
     if (item.isButton) {
       return (
         <Button 
@@ -44,7 +46,7 @@ export default function Navbar({ data }: NavbarProps) {
     <header className="sticky top-0 z-40 w-full border-b bg-background">
       <div className="container mx-auto flex h-16 items-center justify-between px-4 md:px-6">
         <Link href="/" className="flex items-center gap-2">
-          <Waves className={`h-6 w-6 ${data.logo.color}`} />
+          <Waves className={`size-6 ${data.logo.color}`} />
           <span className="text-lg font-bold">{data.logo.text}</span>
         </Link>
 
@@ -57,14 +59,14 @@ export default function Navbar({ data }: NavbarProps) {
               aria-label="Toggle Menu"
             >
               {isMenuOpen ? (
-                <X className="h-6 w-6" />
+                <X className="size-6" />
               ) : (
-                <Menu className="h-6 w-6" />
+                <Menu className="size-6" />
               )}
             </Button>
 
             {isMenuOpen && (
-              <div className="absolute top-16 left-0 right-0 bg-background border-b p-4 flex flex-col gap-4">
+              <div className="absolute inset-x-0 top-16 flex flex-col gap-4 border-b bg-background p-4">
                 {data.menuItems.map((item) => renderMenuItem(item, toggleMenu))}
               </div>
             )}

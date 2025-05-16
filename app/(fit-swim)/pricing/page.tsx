@@ -26,18 +26,18 @@ export default async function PricingPage() {
   const cta = pricing.docs[0].ctaSection;
 
   return (
-    <div className="flex flex-col min-h-screen">
+    <div className="flex min-h-screen flex-col">
       {/* Hero Section */}
-      <section className="py-20 bg-sky-50">
+      <section className="bg-sky-50 py-20">
         <div className="container mx-auto px-4 md:px-6">
-          <div className="text-center max-w-3xl mx-auto">
-            <h1 className="text-4xl font-bold tracking-tight sm:text-5xl md:text-6xl mb-6">
+          <div className="mx-auto max-w-3xl text-center">
+            <h1 className="mb-6 text-4xl font-bold tracking-tight sm:text-5xl md:text-6xl">
               {hero.heading}
             </h1>
-            <p className="text-xl text-muted-foreground mb-8">
+            <p className="mb-8 text-xl text-muted-foreground">
               {hero.subheading}
             </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <div className="flex flex-col justify-center gap-4 sm:flex-row">
               <Button asChild className="bg-sky-600 hover:bg-sky-700">
                 <Link href={hero.buttonLink}>{hero.buttonText}</Link>
               </Button>
@@ -50,13 +50,13 @@ export default async function PricingPage() {
       </section>
 
       {/* Training Concepts */}
-      <section className="py-20 bg-white">
+      <section className="bg-white py-20">
         <div className="container mx-auto px-4 md:px-6">
-          <h2 className="text-3xl font-bold tracking-tight text-center mb-12">
+          <h2 className="mb-12 text-center text-3xl font-bold tracking-tight">
             {trainingConcepts.heading}
           </h2>
-          <div className="grid md:grid-cols-2 gap-12 items-center">
-            <div className="relative h-[400px] rounded-lg overflow-hidden">
+          <div className="grid items-center gap-12 md:grid-cols-2">
+            <div className="relative h-[400px] overflow-hidden rounded-lg">
               <Image
                 src={trainingConcepts.image.url}
                 alt={trainingConcepts.image.alt}
@@ -68,8 +68,8 @@ export default async function PricingPage() {
               <div className="space-y-8">
                 {trainingConcepts.approaches.map((item) => (
                   <div key={item.id}>
-                    <h3 className="text-xl font-bold mb-2 flex items-center">
-                      <Waves className="mr-2 h-5 w-5 text-sky-600" />
+                    <h3 className="mb-2 flex items-center text-xl font-bold">
+                      <Waves className="mr-2 size-5 text-sky-600" />
                       {item.title}
                     </h3>
                     <p className="text-muted-foreground">{item.description}</p>
@@ -82,16 +82,16 @@ export default async function PricingPage() {
       </section>
 
       {/* Training Programs */}
-      <section className="py-20 bg-sky-50">
+      <section className="bg-sky-50 py-20">
         <div className="container mx-auto px-4 md:px-6">
-          <h2 className="text-3xl font-bold tracking-tight text-center mb-4">
+          <h2 className="mb-4 text-center text-3xl font-bold tracking-tight">
             {specializedPrograms.heading}
           </h2>
-          <p className="text-center text-muted-foreground mb-12 max-w-2xl mx-auto">
+          <p className="mx-auto mb-12 max-w-2xl text-center text-muted-foreground">
             {specializedPrograms.subheading}
           </p>
           <div
-            className={`grid grid-cols-1 gap-8 place-items-center ${
+            className={`grid grid-cols-1 place-items-center gap-8 ${
               specializedPrograms.programs.length > 2
                 ? "md:grid-cols-3"
                 : "md:grid-cols-2"
@@ -100,28 +100,28 @@ export default async function PricingPage() {
             {specializedPrograms.programs.map((program) => (
               <div
                 key={program.id}
-                className="bg-white rounded-lg shadow-sm p-6 border"
+                className="rounded-lg border bg-white p-6 shadow-sm"
               >
-                <div className="p-3 rounded-full bg-sky-100 inline-block mb-4">
+                <div className="mb-4 inline-block rounded-full bg-sky-100 p-3">
                   {program.icon === "waves" && (
-                    <Waves className="h-6 w-6 text-sky-600" />
+                    <Waves className="size-6 text-sky-600" />
                   )}
                   {program.icon === "award" && (
-                    <Award className="h-6 w-6 text-sky-600" />
+                    <Award className="size-6 text-sky-600" />
                   )}
                   {program.icon === "users" && (
-                    <Users className="h-6 w-6 text-sky-600" />
+                    <Users className="size-6 text-sky-600" />
                   )}
                 </div>
-                <h3 className="text-xl font-bold mb-2">{program.title}</h3>
-                <p className="text-muted-foreground mb-4">
+                <h3 className="mb-2 text-xl font-bold">{program.title}</h3>
+                <p className="mb-4 text-muted-foreground">
                   {program.description}
                   fundamental stroke development.
                 </p>
-                <ul className="space-y-2 mb-6">
+                <ul className="mb-6 space-y-2">
                   {program.features.map((feature) => (
                     <li key={feature.id} className="flex items-start">
-                      <Check className="mr-2 h-5 w-5 text-sky-600 mt-0.5" />
+                      <Check className="mr-2 mt-0.5 size-5 text-sky-600" />
                       <span>{feature.feature}</span>
                     </li>
                   ))}
@@ -138,49 +138,49 @@ export default async function PricingPage() {
       </section>
 
       {/* Pricing Packages */}
-      <section id="packages" className="py-20 bg-white">
+      <section id="packages" className="bg-white py-20">
         <div className="container mx-auto px-4 md:px-6">
-          <h2 className="text-3xl font-bold tracking-tight text-center mb-4">
+          <h2 className="mb-4 text-center text-3xl font-bold tracking-tight">
             {pricingPackages.heading}
           </h2>
-          <p className="text-center text-muted-foreground mb-12 max-w-2xl mx-auto">
+          <p className="mx-auto mb-12 max-w-2xl text-center text-muted-foreground">
             {pricingPackages.subheading}
           </p>
           <div
-            className={`grid grid-cols-1 gap-8 place-items-center ${
+            className={`grid grid-cols-1 place-items-center gap-8 ${
               `md:grid-cols-${Math.min(pricingPackages.packages.length, 3)}`
             }`}
           >
             {pricingPackages.packages.map((pack) => (
               <div
                 key={pack.id}
-                className={`border rounded-lg p-6 shadow-sm flex flex-col h-full relative ${pack.isPopular ? 'bg-sky-50' : ''}`}
+                className={`relative flex h-full flex-col rounded-lg border p-6 shadow-sm ${pack.isPopular ? 'bg-sky-50' : ''}`}
 
               >
                 {pack.isPopular && (
-                  <div className="absolute top-0 right-0 bg-sky-600 text-white text-xs font-bold px-3 py-1 rounded-bl-lg rounded-tr-lg">
+                  <div className="absolute right-0 top-0 rounded-bl-lg rounded-tr-lg bg-sky-600 px-3 py-1 text-xs font-bold text-white">
                     POPULAR
                   </div>
                 )}
-                <h3 className="text-xl font-bold mb-2">{pack.name}</h3>
-                <div className="text-3xl font-bold mb-4">
+                <h3 className="mb-2 text-xl font-bold">{pack.name}</h3>
+                <div className="mb-4 text-3xl font-bold">
                   €{pack.price}
                   <span className="text-base font-normal text-muted-foreground">
                     /{pack.unit}
                   </span>
                 </div>
-                <ul className="space-y-2 mb-6 flex-grow">
+                <ul className="mb-6 grow space-y-2">
                   {pack.features.map((feature) => (
                     <li key={feature.id} className="flex items-center">
-                      <ChevronRight className="mr-2 h-4 w-4 text-sky-600" />
+                      <ChevronRight className="mr-2 size-4 text-sky-600" />
                       <span>{feature.feature}</span>
                     </li>
                   ))}
                 </ul>
-                <p className="text-sm text-muted-foreground mb-6">
+                <p className="mb-6 text-sm text-muted-foreground">
                   {pack.description}
                 </p>
-                <Button asChild className="bg-sky-600 hover:bg-sky-700 mt-auto">
+                <Button asChild className="mt-auto bg-sky-600 hover:bg-sky-700">
                   <Link href={pack.buttonLink}>{pack.cta}</Link>
                 </Button>
               </div>
@@ -274,25 +274,25 @@ export default async function PricingPage() {
 
       {/* Additional Services */}
       {additionalServices.services.length > 0 && (
-        <section className="py-20 bg-sky-50">
+        <section className="bg-sky-50 py-20">
           <div className="container mx-auto px-4 md:px-6">
-            <h2 className="text-3xl font-bold tracking-tight text-center mb-4">
+            <h2 className="mb-4 text-center text-3xl font-bold tracking-tight">
             {additionalServices.heading}
           </h2>
-          <p className="text-center text-muted-foreground mb-12 max-w-2xl mx-auto">
+          <p className="mx-auto mb-12 max-w-2xl text-center text-muted-foreground">
             {additionalServices.subheading}
           </p>
-          <div className={`grid grid-cols-1 md:grid-cols-${Math.min(additionalServices.services.length, 2)} gap-8 max-w-4xl mx-auto`}>
+          <div className={`md:grid-cols- grid grid-cols-1${Math.min(additionalServices.services.length, 2)} mx-auto max-w-4xl gap-8`}>
             {additionalServices.services.map((service) => (
-              <div key={service.id} className="bg-white rounded-lg shadow-sm p-6 border">
-                <h3 className="text-xl font-bold mb-2">{service.title}</h3>
-                <div className="text-2xl font-bold mb-4">
+              <div key={service.id} className="rounded-lg border bg-white p-6 shadow-sm">
+                <h3 className="mb-2 text-xl font-bold">{service.title}</h3>
+                <div className="mb-4 text-2xl font-bold">
                 €{service.price}
                 <span className="text-base font-normal text-muted-foreground">
                   /{service.priceLabel}
                 </span>
               </div>
-              <p className="text-muted-foreground mb-4">
+              <p className="mb-4 text-muted-foreground">
                 {service.description}
               </p>
               <Button asChild variant="outline" className="w-full">
@@ -355,15 +355,15 @@ export default async function PricingPage() {
       </section>)}
 
       {/* FAQ Section */}
-      <section className="py-20 bg-white">
+      <section className="bg-white py-20">
         <div className="container mx-auto px-4 md:px-6">
-          <h2 className="text-3xl font-bold tracking-tight text-center mb-12">
+          <h2 className="mb-12 text-center text-3xl font-bold tracking-tight">
             {faq.heading}
           </h2>
-          <div className="max-w-3xl mx-auto space-y-6">
+          <div className="mx-auto max-w-3xl space-y-6">
             {faq.faqs.map((faq) => (
-            <div key={faq.id} className="border rounded-lg p-6">
-              <h3 className="text-xl font-bold mb-2">
+            <div key={faq.id} className="rounded-lg border p-6">
+              <h3 className="mb-2 text-xl font-bold">
                 {faq.question}
               </h3>
               <p className="text-muted-foreground">
@@ -376,22 +376,22 @@ export default async function PricingPage() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 bg-sky-600 text-white">
-        <div className="container mx-auto px-4 md:px-6 text-center">
-          <h2 className="text-3xl font-bold tracking-tight sm:text-4xl md:text-5xl mb-6">
+      <section className="bg-sky-600 py-20 text-white">
+        <div className="container mx-auto px-4 text-center md:px-6">
+          <h2 className="mb-6 text-3xl font-bold tracking-tight sm:text-4xl md:text-5xl">
             {cta.heading}
           </h2>
-          <p className="mb-8 text-sky-100 md:text-xl max-w-2xl mx-auto">
+          <p className="mx-auto mb-8 max-w-2xl text-sky-100 md:text-xl">
             {cta.subheading}
           </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+          <div className="flex flex-col justify-center gap-4 sm:flex-row">
             <Button asChild className="bg-white text-sky-600 hover:bg-sky-50">
               <Link href={cta.primaryButtonLink}>{cta.primaryButtonText}</Link>
             </Button>
             <Button
                   asChild
                   variant="outline"
-                  className="text-white bg-sky-700 border-none hover:text-white hover:bg-sky-700/20"
+                  className="border-none bg-sky-700 text-white hover:bg-sky-700/20 hover:text-white"
                 >
                   <Link href={cta.secondaryButtonLink}>{cta.secondaryButtonText}</Link>
                 </Button>

@@ -5,6 +5,7 @@ import TestimonialCard from "@/components/testimonial-card";
 import { Button } from "@/components/ui/button";
 import { IHome } from "@/types/IHome";
 import { PayloadWrapper } from "@/types/PayloadWrapper";
+import { SerializedEditorState, SerializedLexicalNode } from "@payloadcms/richtext-lexical/lexical";
 import { Award, Calendar, ChevronRight, Waves } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
@@ -26,13 +27,13 @@ export default async function Home() {
   const testimonialsSection = home.docs[0].testimonialsSection;
   const ctaSection = home.docs[0].ctaSection;
   return (
-    <div className="flex flex-col min-h-screen">
+    <div className="flex min-h-screen flex-col">
       <HeroSection hero={home.docs[0].hero} />
 
       {/* Features Section */}
-      <section className="py-20 bg-white">
+      <section className="bg-white py-20">
         <div className="container mx-auto px-4 md:px-6">
-          <div className="text-center mb-12">
+          <div className="mb-12 text-center">
             <h2 className="text-3xl font-bold tracking-tight sm:text-4xl md:text-5xl">
               {featureSection.heading}
             </h2>
@@ -40,21 +41,21 @@ export default async function Home() {
               {featureSection.subheading}
             </p>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 gap-8 md:grid-cols-3">
             {featureSection.features.map((feature) => (
-              <div key={feature.id} className="flex flex-col items-center text-center p-6 bg-sky-50 rounded-lg">
-                <div className="p-3 rounded-full bg-sky-100 mb-4">
+              <div key={feature.id} className="flex flex-col items-center rounded-lg bg-sky-50 p-6 text-center">
+                <div className="mb-4 rounded-full bg-sky-100 p-3">
                   {feature.icon === "waves" && (
-                    <Waves className="h-6 w-6 text-sky-600" />
+                    <Waves className="size-6 text-sky-600" />
                   )}
                   {feature.icon === "award" && (
-                    <Award className="h-6 w-6 text-sky-600" />
+                    <Award className="size-6 text-sky-600" />
                   )}
                   {feature.icon === "calendar" && (
-                    <Calendar className="h-6 w-6 text-sky-600" />
+                    <Calendar className="size-6 text-sky-600" />
                   )}
                 </div>
-                <h3 className="text-xl font-bold mb-2">{feature.title}</h3>
+                <h3 className="mb-2 text-xl font-bold">{feature.title}</h3>
                 <p className="text-muted-foreground">{feature.description}</p>
               </div>
             ))}
@@ -63,24 +64,24 @@ export default async function Home() {
       </section>
 
       {/* About Preview Section */}
-      <section className="py-20 bg-sky-50">
+      <section className="bg-sky-50 py-20">
         <div className="container mx-auto px-4 md:px-6">
-          <div className="grid md:grid-cols-2 gap-10 items-center">
+          <div className="grid items-center gap-10 md:grid-cols-2">
             <div>
-              <h2 className="text-3xl font-bold tracking-tight mb-4">
+              <h2 className="mb-4 text-3xl font-bold tracking-tight">
                 {aboutSection.heading}
               </h2>
-              <div className="text-muted-foreground mb-6">
-                <RichText content={aboutSection.content as any} />
+              <div className="mb-6 text-muted-foreground">
+                <RichText content={aboutSection.content as SerializedEditorState<SerializedLexicalNode>} />
               </div>
               <Button asChild className="bg-sky-600 hover:bg-sky-700">
                 <Link href={aboutSection.buttonLink}>
                   {aboutSection.buttonText}
-                  <ChevronRight className="ml-2 h-4 w-4" />
+                  <ChevronRight className="ml-2 size-4" />
                 </Link>
               </Button>
             </div>
-            <div className="relative h-[400px] rounded-lg overflow-hidden">
+            <div className="relative h-[400px] overflow-hidden rounded-lg">
               <Image
                 src={aboutSection.image.url}
                 alt={aboutSection.image.alt}
@@ -93,9 +94,9 @@ export default async function Home() {
       </section>
 
       {/* Pricing Preview */}
-      <section className="py-20 bg-white">
+      <section className="bg-white py-20">
         <div className="container mx-auto px-4 md:px-6">
-          <div className="text-center mb-12">
+          <div className="mb-12 text-center">
             <h2 className="text-3xl font-bold tracking-tight sm:text-4xl md:text-5xl">
               {pricingSection.heading}
             </h2>
@@ -103,30 +104,30 @@ export default async function Home() {
               {pricingSection.subheading}
             </p>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+          <div className="mx-auto grid max-w-5xl grid-cols-1 gap-8 md:grid-cols-3">
             {pricingSection.packages.map((pricePackage) => (
               <div
                 key={pricePackage.id}
-                className={`border rounded-lg p-6 shadow-sm relative  flex flex-col ${
+                className={`relative flex flex-col rounded-lg border  p-6 shadow-sm ${
                   pricePackage.isPopular ? "bg-sky-50" : ""
                 }`}
               >
                 {pricePackage.isPopular && (
-                  <div className="absolute top-0 right-0 bg-sky-600 text-white text-xs font-bold px-3 py-1 rounded-bl-lg rounded-tr-lg">
+                  <div className="absolute right-0 top-0 rounded-bl-lg rounded-tr-lg bg-sky-600 px-3 py-1 text-xs font-bold text-white">
                     POPULAR
                   </div>
                 )}
-                <h3 className="text-xl font-bold mb-2">{pricePackage.name}</h3>
-                <div className="text-3xl font-bold mb-4">
+                <h3 className="mb-2 text-xl font-bold">{pricePackage.name}</h3>
+                <div className="mb-4 text-3xl font-bold">
                   €{pricePackage.price}
                   <span className="text-base font-normal text-muted-foreground">
                     {pricePackage.unit}
                   </span>
                 </div>
-                <ul className="space-y-2 mb-6 flex-grow">
+                <ul className="mb-6 grow space-y-2">
                   {pricePackage.features.map((feature) => (
                     <li key={feature.id} className="flex items-center">
-                      <ChevronRight className="mr-2 h-4 w-4 text-sky-600" />
+                      <ChevronRight className="mr-2 size-4 text-sky-600" />
                       <span>{feature.feature}</span>
                     </li>
                   ))}
@@ -147,9 +148,9 @@ export default async function Home() {
       </section>
 
       {/* Testimonials Section */}
-      <section className="py-20 bg-sky-50">
+      <section className="bg-sky-50 py-20">
         <div className="container mx-auto px-4 md:px-6">
-          <div className="text-center mb-12">
+          <div className="mb-12 text-center">
             <h2 className="text-3xl font-bold tracking-tight sm:text-4xl md:text-5xl">
               {testimonialsSection.heading}
             </h2>
@@ -157,7 +158,7 @@ export default async function Home() {
               {testimonialsSection.subheading}
             </p>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 gap-8 md:grid-cols-3">
             {testimonialsSection.testimonials.map((testimonial) => (
               <TestimonialCard
                 key={testimonial.id}
@@ -168,11 +169,11 @@ export default async function Home() {
               />
             ))}
           </div>
-          <div className="text-center mt-12">
+          <div className="mt-12 text-center">
             <Button asChild variant="outline">
               <Link href={testimonialsSection.buttonLink}>
                 {testimonialsSection.buttonText}
-                <ChevronRight className="ml-2 h-4 w-4" />
+                <ChevronRight className="ml-2 size-4" />
               </Link>
             </Button>
           </div>
@@ -180,22 +181,22 @@ export default async function Home() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 bg-sky-600 text-white">
-        <div className="container mx-auto px-4 md:px-6 text-center">
-          <h2 className="text-3xl font-bold tracking-tight sm:text-4xl md:text-5xl mb-6">
+      <section className="bg-sky-600 py-20 text-white">
+        <div className="container mx-auto px-4 text-center md:px-6">
+          <h2 className="mb-6 text-3xl font-bold tracking-tight sm:text-4xl md:text-5xl">
             {ctaSection.heading}
           </h2>
-          <p className="mb-8 text-sky-100 md:text-xl max-w-2xl mx-auto">
+          <p className="mx-auto mb-8 max-w-2xl text-sky-100 md:text-xl">
             {ctaSection.content}
           </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+          <div className="flex flex-col justify-center gap-4 sm:flex-row">
             <Button asChild className="bg-white text-sky-600 hover:bg-sky-50">
               <Link href={ctaSection.primaryButtonLink}>{ctaSection.primaryButtonText}</Link>
             </Button>
             <Button
               asChild
               variant="outline"
-              className="text-white bg-sky-700 border-none hover:text-white hover:bg-sky-700/20"
+              className="border-none bg-sky-700 text-white hover:bg-sky-700/20 hover:text-white"
             >
               <Link href={ctaSection.secondaryButtonLink}>{ctaSection.secondaryButtonText}</Link>
             </Button>

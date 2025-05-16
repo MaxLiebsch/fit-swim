@@ -2,16 +2,13 @@
 
 import Cal from "@calcom/embed-react";
 const CalendarPage = () => {
-
   return (
-    <div className="bg-sky-50 min-h-[500px]">
-      <section className="py-4 md:py-20 flex-1">
-        <div className="container mx-auto my-auto px-4 md:px-6">
-          <Cal
-            calLink="fit-swim.de/schwimmstunde-sse"
-            config={{ theme: "light" }}
-          />
-        </div>
+    <div className="grid min-h-[500px] bg-sky-50">
+      <section className="container mx-auto p-4 md:py-20">
+        <Cal
+          calLink="fit-swim.de/schwimmstunde-sse"
+          config={{ theme: "light" }}
+        />
       </section>
     </div>
   );
