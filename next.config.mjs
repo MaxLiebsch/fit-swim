@@ -4,7 +4,6 @@ import createMDX from "@next/mdx";
 import { withPayload } from "@payloadcms/next/withPayload";
 
 const nextConfig = {
-  turbopack: {},
   reactStrictMode: true,
   eslint: {
     ignoreDuringBuilds: true,
