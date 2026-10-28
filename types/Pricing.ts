@@ -1,9 +1,11 @@
 import { Image, Package } from "./IHome"
+import { Seo } from "./Seo"
 
 export interface Pricing {
     createdAt: string
     updatedAt: string
     title: string
+    seo?: Seo | null
     heroSection: HeroSection
     trainingApproach: TrainingApproach
     specializedPrograms: SpecializedPrograms

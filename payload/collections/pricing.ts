@@ -1,3 +1,4 @@
+import { seoFields } from '@/payload/fields/seo';
 import { CollectionConfig } from 'payload';
 
 export const PricingPage: CollectionConfig = {
@@ -14,6 +15,7 @@ export const PricingPage: CollectionConfig = {
       type: 'text',
       required: true,
     },
+    seoFields,
     {
       name: 'heroSection',
       type: 'group',

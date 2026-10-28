@@ -2,25 +2,19 @@ import "@/app/(fit-swim)/globals.css";
 import Footer from "@/components/layout/footer";
 import Navbar from "@/components/layout/navbar";
 import { ThemeProvider } from "@/components/theme-provider";
+import { siteMetadata } from "@/lib/seo";
+import { getMetadata } from "@/payload/getMetadata";
 import { getNavbar } from "@/payload/getNavbar";
 import { Inter } from "next/font/google";
+import type { Metadata } from "next";
 import type React from "react";
 
 const inter = Inter({ subsets: ["latin"] });
 
-export const metadata = {
-  title: "Fit Swim - Professionaler Schwimmunterricht",
-  keywords: [
-    "Schwimmunterricht",
-    "Schwimmstunde",
-    "Schwimmkurs",
-    "Schwimmlehrer",
-    "Berlin",
-    "Kinderkurse",
-  ],
-  description:
-    "Professioneller Schwimmunterricht in Berlin für alle Altersgruppen und Schwimmstärken. Verbessern Sie Ihre Technik, bauen Sie Vertrauen und erreichen Sie Ihre Schwimmziele.",
-};
+export async function generateMetadata(): Promise<Metadata> {
+  const metadata = await getMetadata();
+  return siteMetadata(metadata.docs[0]);
+}
 
 export default async function RootLayout({
   children,

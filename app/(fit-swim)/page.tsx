@@ -1,26 +1,50 @@
-import config from "@/app/payload.config";
 import HeroSection from "@/components/hero-section";
 import RichText from "@/components/RichText";
 import TestimonialCard from "@/components/testimonial-card";
 import { Button } from "@/components/ui/button";
-import { IHome } from "@/types/IHome";
-import { PayloadWrapper } from "@/types/PayloadWrapper";
+import { pageMetadata } from "@/lib/seo";
+import { getHome } from "@/payload/getHome";
+import { getMetadata } from "@/payload/getMetadata";
 import { SerializedEditorState, SerializedLexicalNode } from "@payloadcms/richtext-lexical/lexical";
 import { Award, Calendar, ChevronRight, Waves } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
-import { getPayload } from "payload";
+import type { Metadata } from "next";
 
 export const revalidate = 3600;
 
-export default async function Home() {
-  const payload = await getPayload({ config });
+export async function generateMetadata(): Promise<Metadata> {
+  const [home, site] = await Promise.all([getHome(), getMetadata()]);
+  const doc = home.docs[0];
+  const absoluteTitle =
+    doc?.seo?.metaTitle?.trim() ||
+    site.docs[0]?.title?.trim() ||
+    doc?.hero.heading ||
+    "Fit Swim";
+  const metadata = pageMetadata({
+    path: "/",
+    heading: doc?.hero.heading,
+    subheading: doc?.hero.subheading,
+    metaTitle: doc?.seo?.metaTitle,
+    metaDescription: doc?.seo?.metaDescription,
+  });
 
-  const home = (await payload.find({
-    collection: "home",
-    limit: 1,
-    depth: 4,
-  })) as PayloadWrapper<IHome>;
+  return {
+    ...metadata,
+    title: { absolute: absoluteTitle },
+    openGraph: {
+      ...metadata.openGraph,
+      title: absoluteTitle,
+    },
+    twitter: {
+      ...metadata.twitter,
+      title: absoluteTitle,
+    },
+  };
+}
+
+export default async function Home() {
+  const home = await getHome();
   const featureSection = home.docs[0].featuresSection;
   const aboutSection = home.docs[0].aboutPreview;
   const pricingSection = home.docs[0].pricingPreview;

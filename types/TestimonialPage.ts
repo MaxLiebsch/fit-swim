@@ -1,10 +1,12 @@
 import { Testimonial } from "./IHome"
+import { Seo } from "./Seo"
 
 export interface TestimonialPage {
     createdAt: string
     updatedAt: string
     title: string
     description: string
+    seo?: Seo | null
     statsText: string
     featuredTestimonialsTitle: string
     featuredTestimonials: FeaturedTestimonial[]

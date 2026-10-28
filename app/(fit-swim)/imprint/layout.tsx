@@ -1,20 +1,16 @@
-export const metadata = {
-  title: 'Impressum - Fit-Swim',
-  description: 'Impressum - Fit-Swim',
-}
+import { pageMetadata } from "@/lib/seo";
+import type { ReactNode } from "react";
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode
-}) {
+export const metadata = pageMetadata({
+  path: "/imprint",
+  heading: "Impressum",
+  subheading: "Impressum und Kontaktdaten von Fit Swim in Berlin.",
+});
+
+export default function ImprintLayout({ children }: { children: ReactNode }) {
   return (
-    <html lang="de">
-      <body>
-        <div className="container mx-auto px-4 md:px-6">
-          {children}
-        </div>
-      </body>
-    </html>
-  )
+    <div className="container mx-auto max-w-3xl px-4 py-16 md:px-6">
+      <article className="prose prose-slate max-w-none">{children}</article>
+    </div>
+  );
 }

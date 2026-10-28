@@ -1,11 +1,25 @@
 import TestimonialCard from "@/components/testimonial-card";
 import { Button } from "@/components/ui/button";
+import { pageMetadata } from "@/lib/seo";
 import { getTestimonialPage } from "@/payload/getTestimonials";
 import { Star } from "lucide-react";
+import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 
 export const revalidate = 3600;
+
+export async function generateMetadata(): Promise<Metadata> {
+  const testimonials = await getTestimonialPage();
+  const doc = testimonials.docs[0];
+  return pageMetadata({
+    path: "/testimonials",
+    heading: doc?.title,
+    subheading: doc?.description,
+    metaTitle: doc?.seo?.metaTitle,
+    metaDescription: doc?.seo?.metaDescription,
+  });
+}
 
 export default async function TestimonialsPage() {
   const testimonials = await getTestimonialPage();

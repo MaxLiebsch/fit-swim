@@ -2,6 +2,7 @@ import AboutPage from "@/payload/collections/about";
 import ContactPage from "@/payload/collections/contact";
 import { Footer } from "@/payload/collections/footer";
 import Home from "@/payload/collections/home";
+import { Metadata } from "@/payload/collections/metadata";
 import { Navbar } from "@/payload/collections/navbar";
 import Packages from "@/payload/collections/packages";
 import { PricingPage } from "@/payload/collections/pricing";
@@ -34,6 +35,7 @@ export default buildConfig({
     Testimonials,
     Packages,
     Navbar,
+    Metadata,
     PricingPage,
     AboutPage,
     TestimonialsPage,

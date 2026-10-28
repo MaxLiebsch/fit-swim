@@ -1,3 +1,4 @@
+import { seoFields } from "@/payload/fields/seo";
 import { CollectionConfig } from "payload";
 
 const TestimonialsPage: CollectionConfig = {
@@ -22,6 +23,7 @@ const TestimonialsPage: CollectionConfig = {
       required: true,
       defaultValue: 'Success stories from swimmers across Berlin',
     },
+    seoFields,
     {
       name: 'statsText',
       type: 'text',

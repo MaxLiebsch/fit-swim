@@ -1,21 +1,27 @@
-import config from "@/app/payload.config";
 import { Button } from "@/components/ui/button";
-import { PayloadWrapper } from "@/types/PayloadWrapper";
-import { Pricing } from "@/types/Pricing";
+import { pageMetadata } from "@/lib/seo";
+import { getPricing } from "@/payload/getPricing";
 import { Award, Check, ChevronRight, Users, Waves } from "lucide-react";
+import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
-import { getPayload } from "payload";
 
 export const revalidate = 3600;
 
+export async function generateMetadata(): Promise<Metadata> {
+  const pricing = await getPricing();
+  const doc = pricing.docs[0];
+  return pageMetadata({
+    path: "/pricing",
+    heading: doc?.heroSection.heading,
+    subheading: doc?.heroSection.subheading,
+    metaTitle: doc?.seo?.metaTitle,
+    metaDescription: doc?.seo?.metaDescription,
+  });
+}
+
 export default async function PricingPage() {
-  const payload = await getPayload({ config });
-  const pricing = (await payload.find({
-    collection: "pricing",
-    limit: 1,
-    depth: 4,
-  })) as PayloadWrapper<Pricing>;
+  const pricing = await getPricing();
 
   const hero = pricing.docs[0].heroSection;
   const trainingConcepts = pricing.docs[0].trainingApproach;
