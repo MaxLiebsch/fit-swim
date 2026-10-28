@@ -1,3 +1,4 @@
+import { seoFields } from "@/payload/fields/seo";
 import { CollectionConfig } from "payload";
 
 const Home: CollectionConfig = {
@@ -15,6 +16,7 @@ const Home: CollectionConfig = {
       required: true,
       defaultValue: 'Home Page',
     },
+    seoFields,
     // Hero Section
     {
       name: 'hero',

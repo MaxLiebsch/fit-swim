@@ -1,12 +1,26 @@
 import RichText from "@/components/RichText";
 import { Button } from "@/components/ui/button";
+import { pageMetadata } from "@/lib/seo";
 import { getAbout } from "@/payload/getAbout";
 import { SerializedEditorState, SerializedLexicalNode } from "@payloadcms/richtext-lexical/lexical";
 import { Award, Calendar, MapPin } from "lucide-react";
+import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 
 export const revalidate = 3600;
+
+export async function generateMetadata(): Promise<Metadata> {
+  const about = await getAbout();
+  const doc = about.docs[0];
+  return pageMetadata({
+    path: "/about",
+    heading: doc?.hero.heading,
+    subheading: doc?.hero.subheading,
+    metaTitle: doc?.seo?.metaTitle,
+    metaDescription: doc?.seo?.metaDescription,
+  });
+}
 
 export default async function AboutPage() {
   const about = await getAbout();

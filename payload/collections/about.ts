@@ -1,3 +1,4 @@
+import { seoFields } from "@/payload/fields/seo";
 import { CollectionConfig } from "payload";
 
 const AboutPage: CollectionConfig = {
@@ -15,6 +16,7 @@ const AboutPage: CollectionConfig = {
       type: "text",
       required: true,
     },
+    seoFields,
     // Hero Section
     {
       name: "hero",

@@ -1,7 +1,10 @@
+import { Seo } from "./Seo"
+
 export interface ContactPage {
     createdAt: string
     updatedAt: string
     title: string
+    seo?: Seo | null
     heroSection: HeroSection
     contactFormSection: ContactFormSection
     contactInfo: ContactInfo

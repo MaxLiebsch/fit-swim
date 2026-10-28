@@ -1,9 +1,11 @@
 import { Image } from "./IHome"
+import { Seo } from "./Seo"
 
 export interface About {
     createdAt: string
     updatedAt: string
     title: string
+    seo?: Seo | null
     hero: Hero
     bio: Bio
     qualifications: Qualifications

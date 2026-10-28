@@ -1,10 +1,24 @@
 import ContactForm from "@/components/ContactForm";
 import { Button } from "@/components/ui/button";
 import { Toaster } from "@/components/ui/toaster";
+import { pageMetadata } from "@/lib/seo";
 import { getContact } from "@/payload/getContact";
 import { Calendar, Mail, MapPin, MessageSquare, Phone } from "lucide-react";
+import type { Metadata } from "next";
 
 export const revalidate = 3600;
+
+export async function generateMetadata(): Promise<Metadata> {
+  const contact = await getContact();
+  const doc = contact.docs[0];
+  return pageMetadata({
+    path: "/contact",
+    heading: doc?.heroSection.heading,
+    subheading: doc?.heroSection.subheading,
+    metaTitle: doc?.seo?.metaTitle,
+    metaDescription: doc?.seo?.metaDescription,
+  });
+}
 
 export default async function ContactPage() {
   const contact = await getContact();

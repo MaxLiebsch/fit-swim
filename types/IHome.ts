@@ -1,7 +1,10 @@
+import { Seo } from "./Seo";
+
 export interface IHome {
   createdAt: string;
   updatedAt: string;
   title: string;
+  seo?: Seo | null;
   hero: Hero;
   featuresSection: FeaturesSection;
   aboutPreview: AboutPreview;
