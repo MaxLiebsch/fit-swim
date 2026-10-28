@@ -2,6 +2,7 @@ import "@/app/(fit-swim)/globals.css";
 import Footer from "@/components/layout/footer";
 import Navbar from "@/components/layout/navbar";
 import { ThemeProvider } from "@/components/theme-provider";
+import { localBusinessJsonLd, serializeJsonLd } from "@/lib/localBusiness";
 import { siteMetadata } from "@/lib/seo";
 import { getMetadata } from "@/payload/getMetadata";
 import { getNavbar } from "@/payload/getNavbar";
@@ -21,10 +22,15 @@ export default async function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const navbar = await getNavbar();
+  const [navbar, metadata] = await Promise.all([getNavbar(), getMetadata()]);
+  const jsonLd = serializeJsonLd(localBusinessJsonLd(metadata.docs[0]));
   return (
     <html lang="de">
       <body className={inter.className} suppressHydrationWarning>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: jsonLd }}
+        />
         <ThemeProvider
           attribute="class"
           defaultTheme="light"
