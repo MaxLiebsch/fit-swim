@@ -108,6 +108,78 @@ export const Metadata: CollectionConfig = {
           type: "text",
           defaultValue: "Berlin",
         },
+        {
+          name: "priceRange",
+          type: "text",
+          admin: {
+            description: "Optional. For example €€ or 50–80 €.",
+          },
+        },
+        {
+          name: "latitude",
+          type: "number",
+          admin: {
+            description: "Optional. Map coordinates, for example 52.4497.",
+          },
+        },
+        {
+          name: "longitude",
+          type: "number",
+          admin: {
+            description: "Optional. Map coordinates, for example 13.4513.",
+          },
+        },
+        {
+          name: "openingHours",
+          type: "array",
+          admin: {
+            description: "Optional. Should match the Google Business Profile.",
+          },
+          fields: [
+            {
+              name: "days",
+              type: "select",
+              hasMany: true,
+              required: true,
+              options: [
+                { label: "Montag", value: "Monday" },
+                { label: "Dienstag", value: "Tuesday" },
+                { label: "Mittwoch", value: "Wednesday" },
+                { label: "Donnerstag", value: "Thursday" },
+                { label: "Freitag", value: "Friday" },
+                { label: "Samstag", value: "Saturday" },
+                { label: "Sonntag", value: "Sunday" },
+              ],
+            },
+            {
+              name: "opens",
+              type: "text",
+              required: true,
+              admin: { description: "HH:MM, for example 07:00." },
+            },
+            {
+              name: "closes",
+              type: "text",
+              required: true,
+              admin: { description: "HH:MM, for example 20:00." },
+            },
+          ],
+        },
+        {
+          name: "sameAs",
+          type: "array",
+          admin: {
+            description:
+              "Optional. Profile links such as Google Business Profile, Instagram or directory listings.",
+          },
+          fields: [
+            {
+              name: "url",
+              type: "text",
+              required: true,
+            },
+          ],
+        },
       ],
     },
     {

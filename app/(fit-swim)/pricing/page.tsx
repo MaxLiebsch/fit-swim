@@ -1,5 +1,7 @@
 import { Button } from "@/components/ui/button";
-import { pageMetadata } from "@/lib/seo";
+import { pricingJsonLd, serializeJsonLd } from "@/lib/localBusiness";
+import { pageMetadata, resolveSiteUrl } from "@/lib/seo";
+import { getMetadata } from "@/payload/getMetadata";
 import { getPricing } from "@/payload/getPricing";
 import { Award, Check, ChevronRight, Users, Waves } from "lucide-react";
 import type { Metadata } from "next";
@@ -20,8 +22,16 @@ export async function generateMetadata(): Promise<Metadata> {
   });
 }
 
+const gridColumns: Record<number, string> = {
+  1: "md:grid-cols-1",
+  2: "md:grid-cols-2",
+  3: "md:grid-cols-3",
+};
+
 export default async function PricingPage() {
-  const pricing = await getPricing();
+  const [pricing, metadata] = await Promise.all([getPricing(), getMetadata()]);
+  const siteUrl = resolveSiteUrl(metadata.docs[0]?.siteUrl);
+  const jsonLd = pricingJsonLd(siteUrl, pricing.docs[0]);
 
   const hero = pricing.docs[0].heroSection;
   const trainingConcepts = pricing.docs[0].trainingApproach;
@@ -33,6 +43,12 @@ export default async function PricingPage() {
 
   return (
     <div className="flex min-h-screen flex-col">
+      {jsonLd && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: serializeJsonLd(jsonLd) }}
+        />
+      )}
       {/* Hero Section */}
       <section className="bg-sky-50 py-20">
         <div className="container mx-auto px-4 md:px-6">
@@ -122,7 +138,6 @@ export default async function PricingPage() {
                 <h3 className="mb-2 text-xl font-bold">{program.title}</h3>
                 <p className="mb-4 text-muted-foreground">
                   {program.description}
-                  fundamental stroke development.
                 </p>
                 <ul className="mb-6 space-y-2">
                   {program.features.map((feature) => (
@@ -154,7 +169,7 @@ export default async function PricingPage() {
           </p>
           <div
             className={`grid grid-cols-1 place-items-center gap-8 ${
-              `md:grid-cols-${Math.min(pricingPackages.packages.length, 3)}`
+              gridColumns[Math.min(pricingPackages.packages.length, 3)] ?? ""
             }`}
           >
             {pricingPackages.packages.map((pack) => (
@@ -288,7 +303,7 @@ export default async function PricingPage() {
           <p className="mx-auto mb-12 max-w-2xl text-center text-muted-foreground">
             {additionalServices.subheading}
           </p>
-          <div className={`md:grid-cols- grid grid-cols-1${Math.min(additionalServices.services.length, 2)} mx-auto max-w-4xl gap-8`}>
+          <div className={`mx-auto grid max-w-4xl grid-cols-1 gap-8 ${gridColumns[Math.min(additionalServices.services.length, 2)] ?? ""}`}>
             {additionalServices.services.map((service) => (
               <div key={service.id} className="rounded-lg border bg-white p-6 shadow-sm">
                 <h3 className="mb-2 text-xl font-bold">{service.title}</h3>
