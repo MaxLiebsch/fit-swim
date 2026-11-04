@@ -10,6 +10,17 @@ export interface LocalBusinessInfo {
   founderName?: string | null;
   founderJobTitle?: string | null;
   areaServed?: string | null;
+  priceRange?: string | null;
+  latitude?: number | null;
+  longitude?: number | null;
+  openingHours?:
+    | {
+        days: string[];
+        opens: string;
+        closes: string;
+      }[]
+    | null;
+  sameAs?: { url: string }[] | null;
 }
 
 export interface SiteMetadata {
